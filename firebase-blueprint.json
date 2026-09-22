@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "FashionDeal": {
+      "title": "FashionDeal",
+      "description": "Curated fashion deal with affiliate links",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "brand": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "subtitle": { "type": "string", "maxLength": 512 },
+        "category": { "type": "string", "maxLength": 64 },
+        "originalPrice": { "type": "number" },
+        "discountedPrice": { "type": "number" },
+        "discountPercent": { "type": "number" },
+        "imageUrl": { "type": "string", "maxLength": 2048 },
+        "affiliateUrl": { "type": "string", "maxLength": 2048 },
+        "couponCode": { "type": "string", "maxLength": 64 },
+        "tagline": { "type": "string", "maxLength": 256 },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "rewardSlots": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "trendingScore": { "type": "number" },
+        "authorEmail": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "brand", "title", "originalPrice", "discountedPrice", "discountPercent", "imageUrl", "affiliateUrl", "rewardSlots"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with plan, bonus slots, and settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "bonusItemSlots": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/fashion_deals/{dealId}": {
+      "schema": "FashionDeal",
+      "description": "Global live curated fashion deals visible to all app users"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User account and private wardrobe documents"
+    }
+  }
+}

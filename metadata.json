@@ -1,0 +1,11 @@
+{
+  "name": "Kloset - Your smart virtual wardrobe",
+  "description": "Kloset - Your smart virtual wardrobe: Digitize, organize, and style your wardrobe with smart photo cataloging, AI outfit coordinator, color contrast analysis, and packing lists.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "appId": "com.kloset.wardrobe",
+  "appName": "Kloset",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "buildOptions": {
+      "keystorePath": "release-key.keystore",
+      "keystoreAlias": "key0"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Exact Logo Pastel & Luxury Palette with Enhanced Blush Pink & Lighter Olive */
+    --gold: #C89452;
+    --blush: #DFA995;
+    --blush-rich: #D8957F;
+    --blush-accent: #E8A892;
+    --champagne: #F0CAAF;
+    --olive: #5B6E48;
+    --olive-light: #72875E;
+    
+    /* Background Canvas & Refined Pastel Tints */
+    --kloset-canvas: #FAF4F0;
+    --kloset-surface: #FFFFFF;
+    --kloset-champagne-light: #FBF0EB;
+    --kloset-champagne-card: #F8E6DD;
+    --kloset-blush-soft: #F9ECE6;
+    --kloset-blush-light: #F4DCD2;
+    --kloset-blush-border: #E8C1B4;
+    --kloset-olive-soft: #EEF3E9;
+    --kloset-olive-tint: #DFE8D7;
+    --kloset-ebony: #2E2827;
+    --kloset-charcoal: #3D3534;
+    --kloset-border: #E8C8BC;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--kloset-canvas);
+    color: #2B2625;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+  
+  h1, h2, h3, .font-serif-luxury {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.88; transform: scale(0.98); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes glow-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Custom scrollbars with blush gold tone */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8C3BE;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BFA59F;
+}
+
+/* Luxury card glow & depth matching Kloset brand palette */
+.card-hover-luxury {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover-luxury:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -6px rgba(200, 125, 120, 0.15), 0 4px 12px -2px rgba(30, 25, 26, 0.06);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-panel-rose {
+  background: rgba(253, 248, 247, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+

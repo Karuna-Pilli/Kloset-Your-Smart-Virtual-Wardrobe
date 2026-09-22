@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check owner access
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Admin email check (Creator: karunapilli1526@gmail.com)
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'karunapilli1526@gmail.com'
+      );
+    }
+
+    // User profile document
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isOwner(userId) || isAdmin();
+
+      // User subcollections (wardrobe items, outfits, packing lists, family members, sections, reminders)
+      match /{allSubcollections=**} {
+        allow read, write: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    // Global fashion deals feed (Public read for all users, write restricted to Admin/Creator)
+    match /fashion_deals/{dealId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Global affiliate config (Public read, Admin write)
+    match /app_config/{configId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Public shared boutique views (if boutique sharing is active)
+    match /publicBoutiques/{boutiqueId} {
+      allow read: if true;
+      allow write: if isAuthenticated() && request.auth.uid == resource.data.ownerId;
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.ownerId;
+    }
+  }
+}
